@@ -6,10 +6,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{{ title }}</title>
 </head>
 <body>
+    <header class="container">
+        <span class="logo">
+            ByteSkill
+        </span>
+        <nuv>
+            <a href="{% url 'home' %}">Головна</a>
+            <a href="#">Тарифи</a>
+        </nuv>
+    </header>
     {% block main %}
-    {% andblock %}
+    {% endblock %}
+<footer>&copy; ByteSkill - Всі права захищенні</footer>
 </body>
 </html>

@@ -1,4 +1,18 @@
 {% extends 'layout.html' %}
 
 {% block main %}
-    {% andblock %}  
+    <div class="courses container">
+        {% for el in courses%}
+        <div class="course">
+            {% if el.image %}
+            <img src="{{ el.image.url }}" alt="{{el.title}}">
+            {% else %}
+            <img src="/media/default.png" alt="{{el.title}}">
+            {% endif %}
+            <h3>{{el.title}}</h3>
+            <a href="{{ el.get_absolute_url }}">Переглянути курс</a>
+
+        </div>
+        {% endfor%}
+    </div>
+{% endblock %}
