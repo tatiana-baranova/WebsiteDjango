@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title%} Сторінка авторизації {% endblock %}
+
+{% block main %}
+    <div class="form-section container">
+        <h1 class="">Сторінка авторизації</h1>
+        <form class="form-register auth" method='POST'>
+            {% csrf_token %}
+            {{ form}}
+            <button class="mt-2 w-25 btn btn-warning" type="submit">Вхід</button>
+            <hr>
+            <p><a href="{% url 'reg' %}">Реєстрація в особистий профіль</a> </p>
+            <p>Забули пароль?<a href="{% url 'pass_reset' %}">Відновити пароль</a> </p>
+        </form>
+    </div>
+{% endblock %}

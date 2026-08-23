@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title%} Відновлення пароля {% endblock %}
+
+{% block main %}
+    <div class="form-section container">
+        <h1 class="mb-3 fs-1 text-warning-emphasis">Відновлення пароля</h1>
+        <form class="w-50 form-register" method='POST'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="mt-2 btn btn-warning" type="submit">Відновити пароль</button>
+        </form>
+    </div>
+{% endblock %}
