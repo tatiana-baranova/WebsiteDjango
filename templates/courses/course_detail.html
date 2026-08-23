@@ -13,15 +13,23 @@
 
         </div>
         <div class="aside">
-            <h1>Детальний опис курса</h1>
-            <p> {{ object.description }}</p>
-            <ul>
-                {% for el in lessons %}
-                <li>
-                    <a href="{{ el.get_absolute_url}}">{{ el.title }}</a>
-                </li>
-                {% endfor%}
-            </ul>
+            <h1>Детальний опис курса - {{object.title}}</h1>
+            {% if not object.is_free and not user.is_authenticated %}
+            <p>Вам необхідно пройти <a href="{% url 'reg' %}">реєстрацію</a></p>
+            {% else %}
+                {% if object.is_free == True or user.profile.account_type == 'full' %}
+                    <p> {{ object.description }}</p>
+                    <ul>
+                        {% for el in lessons %}
+                        <li>
+                            <a href="{{ el.get_absolute_url}}">{{ el.title }}</a>
+                        </li>
+                        {% endfor%}
+                    </ul>
+                {% else %}
+                    <p>Необхідно оформити <a href="">підписку</a>!</p>
+                {% endif%}
+            {% endif%}
         </div>
     </div>
 {% endblock %}

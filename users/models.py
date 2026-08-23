@@ -2,6 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 import os
+
+TYPE_ACCOUNT = (
+    ('full', 'Повний пакет'),
+    ('free', 'Безкоштовний пакет')
+)
+
 class Profile(models.Model):
     user = models.OneToOneField(User,verbose_name='Користувач', on_delete=models.CASCADE)
     img = models.ImageField('Фото користувача', default='default_image.jpg', upload_to='user_images')
@@ -17,6 +23,9 @@ class Profile(models.Model):
     email_notifications = models.BooleanField(
         verbose_name='Отримання повідомлень на пошту',
         default=False
+    )
+    account_type = models.CharField(
+        choices=TYPE_ACCOUNT, default='free', max_length=20
     )
 
     def __str__(self):
