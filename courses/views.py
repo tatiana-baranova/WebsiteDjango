@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 
-from .models import Course
+from .models import Course, Lesson
 
 
 class HomePage(ListView):
@@ -19,3 +19,30 @@ class HomePage(ListView):
 class CourseDetailPage(DetailView):
     model = Course
     template_name = 'courses/course_detail.html'
+    def get_context_data(
+        self, *, object_list = ..., **kwargs):
+        ctx = super(CourseDetailPage, self).get_context_data(**kwargs)
+        course = Course.objects.filter(slug=self.kwargs['slug']).first()
+        ctx['title'] = course
+        ctx['lessons'] = Lesson.objects.filter(course=course).order_by('number')
+        return ctx
+
+
+
+class LessonDetailPage(DetailView):
+    model = Course
+    template_name = 'courses/lesson_detail.html'
+    def get_context_data(
+        self, *, object_list = ..., **kwargs):
+        ctx = super(LessonDetailPage, self).get_context_data(**kwargs)
+        course = Course.objects.filter(slug=self.kwargs['slug']).first()
+        lesson = Lesson.objects.filter(slug=self.kwargs['lesson_slug']).first()
+
+        if lesson and lesson.video:
+            # lesson.video = lesson.video.split('=')[1]
+            lesson.video = lesson.video.split('v=')[1].split('&')[0]
+
+        ctx['title'] = lesson
+        ctx['lesson'] = lesson
+        return ctx
+

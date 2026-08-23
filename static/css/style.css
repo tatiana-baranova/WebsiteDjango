@@ -51,6 +51,7 @@ header nav a {
 .courses{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 .courses .course{
@@ -78,6 +79,21 @@ header nav a {
 }
 .courses .course a:hover{
     transform: scale(1.1);
+}
+.aside {
+    width: 600px;
+    padding: 20px;
+}
+
+.text-info{
+    margin-bottom: 20px;
+}
+.courses ul {
+    width: 98%;
+    line-height: 178%;
+    margin-left: 7%;
+    margin-top: 20px;
+    font-weight: 600;
 }
 footer{
     margin-top: 50px;

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <div class="courses container">
+
+        <div class="course">
+            {% if object.image %}
+            <img src="{{ object.image.url }}" alt="{{object.title}}">
+            {% else %}
+            <img src="/media/default.png" alt="{{object.title}}">
+            {% endif %}
+            <h3>{{object.title}}</h3>
+
+        </div>
+        <div class="aside">
+            <h1>Відео урок - {{ lesson.title}}</h1>
+            <p class="text-info"> {{ lesson.description }}</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ lesson.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+{% endblock %}

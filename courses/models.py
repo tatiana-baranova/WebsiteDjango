@@ -25,4 +25,5 @@ class Lesson(models.Model):
     def __str__(self):
         return self.title
 
-    
+    def get_absolute_url(self):
+        return reverse('lesson-detail', kwargs={'slug': self.course.slug, 'lesson_slug': self.slug})
