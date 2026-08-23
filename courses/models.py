@@ -13,4 +13,16 @@ class Course(models.Model):
     def get_absolute_url(self):
         return reverse('course-detail', kwargs={'slug': self.slug})
 
-    # class Meta:
+
+class Lesson(models.Model):
+    slug = models.SlugField('Унікальна назва урока')
+    title =models.CharField('Назва урока', max_length=120)
+    description = models.TextField('Опис урока')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Який курс?')
+    number = models.IntegerField('Номер урока')
+    video = models.CharField('Відео Url',  max_length=100)
+
+    def __str__(self):
+        return self.title
+
+    
