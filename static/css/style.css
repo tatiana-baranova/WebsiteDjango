@@ -59,11 +59,13 @@ header nav a {
     margin: 10px;
     padding: 20px;
     box-sizing: border-box;
-    width: 30%;
+    width: 280px;
     color: white;
 }
 .courses .course img {
-    width: 100%;
+    width: 240px;
+    height: 180px;
+    object-fit: cover;
 }
 .courses .course h3{
     margin-top: 10px;
