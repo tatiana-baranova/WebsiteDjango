@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -28,3 +29,11 @@ class Lesson(models.Model):
 
     def get_absolute_url(self):
         return reverse('lesson-detail', kwargs={'slug': self.course.slug, 'lesson_slug': self.slug})
+
+class Comment(models.Model):
+    user = models.ForeignKey(User,verbose_name='Автор коментаря', on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson,verbose_name='Урок', on_delete=models.CASCADE)
+    message = models.TextField(verbose_name='Коментар')
+
+    def __str__(self):
+        return f'{self.user.username} — {self.lesson.title}'

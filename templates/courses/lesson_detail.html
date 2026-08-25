@@ -21,5 +21,39 @@
                 <p>Необхідно оформити <a href="{% url 'tariffs'%}">підписку</a>!</p>
             {% endif %}
         </div>
+
+        <div class="container">
+        <h2>Коментарі</h2>
+        {% if user.is_authenticated %}
+        <form class="form-section" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Додати коментар</button>
+        </form>
+        {% else %}
+            <p class="info-comm">Щоб залишити коментар,
+            <a href="{% url 'user' %}">увійдіть в акаунт</a>.
+            </p>
+        {% endif %}
+            <h3 class="comment-title">Всі коментарі</h3>
+        {% for comment in comments %}
+        <div class="container comment">
+                <img
+            src="{{ comment.user.profile.img.url }}"
+            alt="{{ comment.user.username }}"
+            width="60"
+            height="60"
+            >
+            <div class="comment-content">
+            <p>Коментар: {{ comment.message }}</p>
+            <p>Автор: <b>{{ comment.user.username }}</b></p>
+            </div>
+        </div>
+        {% empty %}
+            <p class="info-comm">Коментарів ще немає.</p>
+        {% endfor %}
     </div>
+    </div>
+
 {% endblock %}
