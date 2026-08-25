@@ -6,6 +6,9 @@ from django.contrib.auth import views as authViews
 urlpatterns = [
     path('reg/', userViews.register, name='reg'),
     path('profile/', userViews.profile, name='profile'),
+    # path('payment/callback/',userViews.wayforpay_callback,name='wayforpay_callback'),
+    # path('payment/test/', userViews.test_callback, name='test_callback'),
+    path('payment/', userViews.create_payment, name='create_payment'),
     path('', authViews.LoginView.as_view(template_name='users/user.html'), name='user'),
     path('exit/', authViews.LogoutView.as_view(template_name='users/exit.html'), name='exit'),
 
@@ -22,4 +25,5 @@ urlpatterns = [
     path('pass-reset-complete/',
          authViews.PasswordResetCompleteView.as_view(template_name='users/pass_reset_complete.html'),
          name='password_reset_complete'),
+
 ]

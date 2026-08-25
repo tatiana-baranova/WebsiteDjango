@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title%} Перейти до оплати {% endblock %}
+
+{% block main %}
+    <div class="form-section container">
+        <p>Сума: <strong>{{ amount }} {{ currency }}</strong></p>
+
+        <p>Номер замовлення: <strong>{{ order_reference }}</strong></p>
+
+        <form method="post" action="https://secure.wayforpay.com/pay">
+
+            <input type="hidden" name="merchantAccount" value="{{ merchant_account }}">
+            <input type="hidden" name="merchantAuthType" value="SimpleSignature">
+            <input type="hidden" name="merchantDomainName" value="{{ merchant_domain_name }}">
+
+            <input type="hidden" name="merchantTransactionType" value="AUTO">
+            <input type="hidden" name="merchantTransactionSecureType" value="AUTO">
+
+            <input type="hidden" name="merchantSignature" value="{{ merchant_signature }}">
+
+            <input type="hidden" name="orderReference" value="{{ order_reference }}">
+            <input type="hidden" name="orderDate" value="{{ order_date }}">
+
+            <input type="hidden" name="amount" value="{{ amount }}">
+            <input type="hidden" name="currency" value="{{ currency }}">
+
+            <input type="hidden" name="productName[]" value="{{ product_name }}">
+            <input type="hidden" name="productCount[]" value="{{ product_count }}">
+            <input type="hidden" name="productPrice[]" value="{{ product_price }}">
+
+            <button type="submit">
+                Перейти до оплати
+            </button>
+
+        </form>
+    </div>
+{% endblock %}

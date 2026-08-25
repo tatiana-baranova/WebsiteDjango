@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <div class="form-section container">
+        {% if not user.is_authenticated %}
+
+    <h2>Оформіть підписку на сайті 😉</h2>
+    <p class="info-tariffs">
+        Спочатку потрібно увійти в акаунт.
+    </p>
+
+    <a href="{% url 'user' %}" class="btn">
+        Увійти
+    </a>
+
+{% elif user.profile.account_type == 'free' %}
+
+    <h2>Оформіть підписку на сайті 😉</h2>
+    <p class="info-tariffs">
+        Підписка надасть доступ до всіх платних курсів
+    </p>
+
+    <a href="{% url 'create_payment' %}" class="payment-course">
+        Оформити (555 грн)
+    </a>
+
+{% else %}
+
+    <p>У вас максимальна підписка 😉</p>
+
+{% endif %}
+    </div>
+{% endblock %}

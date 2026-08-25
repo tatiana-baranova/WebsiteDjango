@@ -4,17 +4,17 @@
 
 {% block main %}
     <div class="form-section container">
-        <h2 class="">Профіль користувача</h2>
+        <h2>Профіль користувача</h2>
         <img class="image-profile" src="{{user.profile.img.url}}" alt="{{user.username}}">
         <p>
             <span class="username">@{{user.username}}</span><br>
             {{user.email}}
         </p>
-        <form method='POST' enctype="multipart/form-data" class="form-register mt-4">
+        <form method='POST' enctype="multipart/form-data" class="form-register ">
         {% csrf_token %}
         {{update_user_form }}
         {{profile_form }}
-        <button class="btn btn-warning mt-2" type="submit">Оновити</button>
+        <button type="submit">Оновити</button>
     </form>
     </div>
     

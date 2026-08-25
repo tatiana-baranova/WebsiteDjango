@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Тест callback{% endblock %}
+
+{% block main %}
+
+<div class="form-section container">
+
+    <h1>Тест WayForPay callback</h1>
+
+    <p>Це тестова сторінка. Реальна оплата не виконується.</p>
+
+    <button type="button" id="test-callback">
+        Відправити тестовий callback
+    </button>
+
+    <p id="result"></p>
+
+</div>
+
+<script>
+    document.getElementById('test-callback').addEventListener('click', async () => {
+
+        const response = await fetch('/user/payment/callback/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                orderReference: '9_1787580409',
+                transactionStatus: 'Approved'
+            })
+        });
+
+        const data = await response.text();
+
+        document.getElementById('result').textContent = data;
+    });
+</script>
+
+{% endblock %}

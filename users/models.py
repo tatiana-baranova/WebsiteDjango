@@ -48,3 +48,38 @@ class Profile(models.Model):
     class Meta:
         verbose_name = 'Профіль'
         verbose_name_plural = 'Профіль'
+
+
+class Payment(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Користувач'
+    )
+    plan = models.CharField(
+        'Тариф',
+        max_length=50,
+        default='full'
+    )
+    amount = models.DecimalField(
+        'Сума',
+        max_digits=10,
+        decimal_places=2
+    )
+    order_reference = models.CharField(
+        'Номер замовлення',
+        max_length=100,
+        unique=True
+    )
+    status = models.CharField(
+        'Статус',
+        max_length=20,
+        default='pending'
+    )
+    created_at = models.DateTimeField(
+        'Дата створення',
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return f'{self.user.username} — {self.amount} грн'

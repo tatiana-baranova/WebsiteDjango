@@ -131,6 +131,15 @@ nav .btn:hover{
     /*width: 70%;*/
 }
 
+form textarea{
+    display: block;
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid silver;
+    margin: 10px 0;
+    font-size: 14px;
+}
 form label{
     margin-top: 15px;
     display: inline-block;
@@ -153,7 +162,8 @@ form input {
     font-size: 14px;
 }
 
-form button{
+.form-section button{
+
     padding: 7px 12px;
     border-radius: 5px;
     border: 0;
@@ -162,8 +172,27 @@ form button{
     transition: transform 500ms ease;
     cursor: pointer;
 }
-form button:hover{
+.form-section button:hover{
     transform: scale(1.2);
+}
+.info-tariffs{
+    margin-bottom: 16px;
+}
+
+.payment-course{
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(4 10 35 / 0.74);
+    color: rgb(255 255 255 / 0.73);
+    transition: transform 500ms ease;
+    cursor: pointer;
+}
+
+.payment-course:hover{
+    transform: scale(1.2);
+    color: #a5bce1;
 }
 hr{
     margin: 10px 0;
@@ -180,4 +209,10 @@ footer{
     background-color: rgb(81 125 161 / 0.26);
     padding: 16px;
     text-align: center;
+}
+
+.errorlist{
+    color: #a50606;
+    list-style: none;
+
 }

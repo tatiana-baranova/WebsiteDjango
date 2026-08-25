@@ -18,7 +18,7 @@
                 <p class="text-info"> {{ lesson.description }}</p>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ lesson.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             {% else %}
-                <p>Необхідно оформити <a href="">підписку</a>!</p>
+                <p>Необхідно оформити <a href="{% url 'tariffs'%}">підписку</a>!</p>
             {% endif %}
         </div>
     </div>

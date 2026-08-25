@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <div class="courses container">
+
+        <form class="form-section" method="post" enctype="multipart/form-data">
+            <h1>Додавання нового курсу</h1>
+            {% csrf_token %}
+
+            {{ form.as_div }}
+
+            <button type="submit">Добавити</button>
+        </form>
+    </div>
+{% endblock %}

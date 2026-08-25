@@ -4,11 +4,11 @@
 
 {% block main %}
     <div class="form-section container">
-        <h1 class="mb-3 fs-1 text-warning-emphasis">{{ title }}</h1>
-        <form class="w-50 form-register" method='POST'>
+        <h1>{{ title }}</h1>
+        <form  method='POST'>
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="mt-2 btn btn-warning" type="submit">Реєстрація</button>
+            <button type="submit">Реєстрація</button>
             <hr>
             <p>Зареєстровані? <a href="{% url 'user' %}">Вхід в особистий профіль</a> </p>
         </form>

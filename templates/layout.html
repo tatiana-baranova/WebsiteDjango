@@ -16,9 +16,10 @@
         </span>
         <nav>
             <a href="{% url 'home' %}">Головна</a>
-            <a href="#">Тарифи</a>
+            <a href="{% url 'tariffs'%}">Тарифи</a>
             {% if user.is_authenticated %}
             <a href="{% url 'profile' %}">Профіль </a>
+            <a href="{% url 'course-add' %}">Додати курс </a>
             <form action="{% url 'exit' %}" method="post">
                 {% csrf_token %}
                 <button class="btn" type="submit">Вихід</button>

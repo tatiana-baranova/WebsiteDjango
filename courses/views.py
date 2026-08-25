@@ -1,8 +1,13 @@
-from django.views.generic import ListView, DetailView
+from django.template.context_processors import request
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import render
-
+from .forms import CourseAddForm
 from .models import Course, Lesson
 
+
+def TariffsPage(request):
+    return render(request, 'courses/tariffs.html', {'title': 'Тарифи на сайті'})
 
 class HomePage(ListView):
     model = Course
@@ -15,6 +20,14 @@ class HomePage(ListView):
         ctx = super(HomePage, self).get_context_data(**kwargs)
         ctx['title'] = 'Головна сторінка'
         return ctx
+
+class AddCoursePage(CreateView):
+    model = Course
+    form_class = CourseAddForm
+    template_name = 'courses/add_course.html'
+
+    def get_absolute_url(self):
+        return reverse('course-detail', kwargs={'slug': self.slug})
 
 class CourseDetailPage(DetailView):
     model = Course
